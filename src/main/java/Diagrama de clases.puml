@@ -1,0 +1,28 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Alumno {
+    -String nombre
+    -String apellido
+    -Set<Materia> materiasAprobadas
+    +Set<Materia> getMateriasAprobadas()
+}
+
+class Inscripcion {
+    -Alumno alumno
+    -Set<Materia> materiasAInscribirse
+    +boolean aprobada()
+}
+
+class Materia {
+    -String nombre
+    -Set<Materia> correlativas
+    +boolean cumpleCorrelativas(List<Materia>)
+}
+
+Alumno --> "*" Materia
+Materia --> "*" Materia
+Inscripcion o-- Alumno
+Inscripcion --> "*" Materia
+
+@enduml
